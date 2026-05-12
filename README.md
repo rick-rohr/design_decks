@@ -24,8 +24,8 @@ Presentations and design reviews for the Gymondo team.
 
 Card thumbnails live in `/thumbs/`. To add one:
 
-1. Take a screenshot of the deck — the hero usually works best. Aim for 16:10 ratio, ~1600×1000px, JPG.
-2. Save it as `thumbs/<short-name>.jpg` (e.g. `thumbs/program-detail.jpg`).
+1. Take a screenshot of the deck — the hero usually works best. Aim for 16:10 ratio, ~1600×1000px, PNG or JPG.
+2. Save it as `thumbs/<short-name>.png` (e.g. `thumbs/program-detail.png`).
 3. Upload via the GitHub web UI (drag and drop into the `thumbs/` folder works).
 
 If a thumbnail is missing or fails to load, the card falls back to its text-only layout automatically — no broken images.
