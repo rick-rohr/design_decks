@@ -6,7 +6,7 @@
 <title>Gymondo · Design Review</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --tangerine: #FF4F30;
@@ -543,6 +543,40 @@
   }
   .dark-note strong { color: var(--white); font-weight: 600; }
 
+  /* Nav hint (hand-drawn, first slide only) */
+  .nav-hint {
+    position: absolute;
+    bottom: 8px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center;
+    gap: 2px;
+    color: var(--tangerine);
+    pointer-events: none;
+    opacity: 0;
+    animation: navHintIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.2s forwards;
+    z-index: 3;
+  }
+  .nav-hint-text {
+    font-family: 'Caveat', cursive;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1;
+    transform: rotate(-4deg);
+    white-space: nowrap;
+  }
+  .nav-hint-arrow {
+    width: 56px; height: 72px;
+    transform: translateX(-12px) rotate(2deg);
+  }
+  @keyframes navHintIn {
+    0% { opacity: 0; transform: translateX(-50%) translateY(-12px); }
+    100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+  @media (max-width: 640px) {
+    .nav-hint-text { font-size: 24px; }
+    .nav-hint-arrow { width: 44px; height: 56px; }
+  }
+
   /* Slide controls */
   .slide-controls {
     position: relative;
@@ -692,7 +726,7 @@
           </div>
           <div class="hero-info-item">
             <span class="hero-info-label">Status</span>
-            <span class="hero-info-value ready">Ready for review</span>
+            <span class="hero-info-value ready">Ready</span>
           </div>
           <div class="hero-info-item">
             <span class="hero-info-label">Author</span>
@@ -715,7 +749,7 @@
     <div class="section-header reveal">
       <div></div>
       <div class="context-body">
-        <p>A focused visual refresh of the two pages where users decide whether to start: <strong>Program Detail</strong> and <strong>Original Series</strong>. Same content model, clearer hierarchy, components that work across both. The Original Series page also gains a few new sections that the old version was missing.</p>
+        <p>A focused visual refresh of the two pages where users decide whether to start: <strong>Program Detail</strong> and <strong>Original Series</strong>. Same content model, clearer hierarchy, components that work across both. The Original Series page also gains a few new sections it didn't have before.</p>
       </div>
     </div>
   </div>
@@ -802,6 +836,17 @@
           <h2 class="slide-intro-title">Program <em>Detail</em></h2>
           <p class="slide-intro-desc">The page every user lands on before starting a program. Same content, clearer surface.</p>
         </div>
+      </div>
+      <div class="nav-hint" aria-hidden="true">
+        <span class="nav-hint-text">tap to navigate</span>
+        <svg class="nav-hint-arrow" viewBox="0 0 56 72" fill="none">
+          <path d="M40 4 C 44 18, 22 22, 20 36 C 18 50, 30 56, 26 66"
+                stroke="currentColor" stroke-width="2.4"
+                stroke-linecap="round" fill="none"/>
+          <path d="M18 58 L26 66 L33 56"
+                stroke="currentColor" stroke-width="2.4"
+                stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
       </div>
     </div>
 
