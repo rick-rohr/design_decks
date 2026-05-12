@@ -92,11 +92,14 @@
     gap: 16px;
   }
   .deck {
-    display: block;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 32px;
+    align-items: stretch;
     background: var(--white);
     border: 1px solid var(--line);
     border-radius: 16px;
-    padding: 28px 32px;
+    padding: 20px;
     text-decoration: none;
     color: inherit;
     transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
@@ -105,6 +108,27 @@
     transform: translateY(-2px);
     border-color: var(--ink);
     box-shadow: 0 12px 32px -16px rgba(20, 20, 20, 0.18);
+  }
+  .deck-thumb {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--lavender);
+  }
+  .deck-thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .deck.no-thumb { grid-template-columns: 1fr; padding: 28px 32px; }
+  .deck.no-thumb .deck-thumb { display: none; }
+  .deck.no-thumb .deck-body { padding: 0; }
+  .deck-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px 12px 8px 0;
   }
   .deck-row {
     display: flex;
@@ -161,10 +185,14 @@
   footer a { color: var(--muted); text-decoration: none; }
   footer a:hover { color: var(--ink); }
 
+  @media (max-width: 720px) {
+    .deck { grid-template-columns: 1fr; gap: 16px; }
+    .deck-body { padding: 4px 8px 12px; }
+  }
   @media (max-width: 640px) {
     .container { padding: 0 24px; }
     .brand { font-size: 40px; }
-    .deck { padding: 24px; }
+    .deck { padding: 16px; }
     .deck-row { flex-direction: column; gap: 8px; }
     .deck-title { font-size: 24px; }
   }
@@ -185,12 +213,19 @@
       <div class="deck-list">
 
         <a class="deck" href="program_detail_page.html">
-          <div class="deck-row">
-            <h2 class="deck-title">Program detail page — <em>design review.</em></h2>
-            <div class="deck-meta">Deck 01</div>
+          <div class="deck-thumb">
+            <img src="thumbs/program-detail.jpg" alt="" loading="lazy" onerror="this.closest('.deck').classList.add('no-thumb')">
           </div>
-          <p class="deck-desc">Sharpening what's already there. Four ideas doing the work on the program detail page.</p>
-          <div class="deck-arrow">Open deck <span>→</span></div>
+          <div class="deck-body">
+            <div>
+              <div class="deck-row">
+                <h2 class="deck-title">Program detail page — <em>design review.</em></h2>
+                <div class="deck-meta">Deck 01</div>
+              </div>
+              <p class="deck-desc">Sharpening what's already there. Four ideas doing the work on the program detail page.</p>
+            </div>
+            <div class="deck-arrow">Open deck <span>→</span></div>
+          </div>
         </a>
 
       </div>

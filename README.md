@@ -15,9 +15,20 @@ Presentations and design reviews for the Gymondo team.
 1. Drop the new `.html` file into this folder (next to `index.html`).
 2. Open `index.html` and copy one of the existing `<a class="deck">…</a>` blocks. Paste it just below, then change:
    - the `href="..."` to your new file's name
+   - the `<img src="thumbs/...">` to point at your thumbnail (or leave it pointing at a non-existent file — the card auto-falls-back to text-only)
    - the title, description, and "Deck 0X" number
 3. Commit and push to `main` (or just upload the files in the GitHub web UI — drag and drop works).
 4. Wait ~1 minute and refresh the live site.
+
+## Thumbnails
+
+Card thumbnails live in `/thumbs/`. To add one:
+
+1. Take a screenshot of the deck — the hero usually works best. Aim for 16:10 ratio, ~1600×1000px, JPG.
+2. Save it as `thumbs/<short-name>.jpg` (e.g. `thumbs/program-detail.jpg`).
+3. Upload via the GitHub web UI (drag and drop into the `thumbs/` folder works).
+
+If a thumbnail is missing or fails to load, the card falls back to its text-only layout automatically — no broken images.
 
 ## First-time setup (one-click, in GitHub)
 
