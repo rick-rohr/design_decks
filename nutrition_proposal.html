@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gymondo Nutrition Coaching — Design Proposal v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --tangerine: #FF4F30;
+    --tangerine-soft: #FFEDE8;
+    --blueberry: #2639DE;
+    --blueberry-soft: #ECEEFD;
+    --whatsapp: #25D366;
+    --lavender: #F2F1F6;
+    --ink: #1a1a1a;
+    --ink-soft: #555;
+    --ink-mute: #888;
+    --line: #e6e4ea;
+    --line-soft: #f0eef3;
+    --card: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--lavender); }
+  body {
+    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    line-height: 1.5;
+    padding: 56px 24px 80px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1040px; margin: 0 auto; }
+
+  /* Page header */
+  .page-header { margin-bottom: 48px; max-width: 760px; }
+  .page-eyebrow {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--blueberry); margin-bottom: 10px;
+  }
+  .page-title {
+    font-size: 32px; font-weight: 800; letter-spacing: -0.02em;
+    margin-bottom: 12px; line-height: 1.15;
+  }
+  .page-sub { color: var(--ink-soft); font-size: 15px; }
+  .page-sub b { color: var(--ink); font-weight: 600; }
+
+  /* ============== Proposed design ============== */
+  .pricing-frame {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 52px 36px 40px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    margin-bottom: 56px;
+  }
+  .frame-eyebrow {
+    text-align: center; color: var(--tangerine);
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .frame-heading {
+    text-align: center; font-size: 26px; font-weight: 700;
+    letter-spacing: -0.01em; margin-bottom: 8px;
+  }
+  .frame-sub {
+    text-align: center; color: var(--ink-soft);
+    font-size: 14px; margin-bottom: 36px; max-width: 520px;
+    margin-left: auto; margin-right: auto;
+  }
+
+  /* Cards grid — popular card scales up */
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1.08fr 1fr;
+    gap: 20px; align-items: stretch;
+  }
+
+  .card {
+    position: relative;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 32px 24px 28px;
+    background: var(--card);
+    display: flex; flex-direction: column;
+  }
+  .card.popular {
+    border: 2px solid var(--tangerine);
+    padding: 31px 23px 27px;
+    box-shadow: 0 8px 24px rgba(255, 79, 48, 0.08);
+  }
+  .popular-badge {
+    position: absolute; top: -12px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--tangerine); color: #fff;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 5px 14px; border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  /* Tier header */
+  .tier-name {
+    text-align: center;
+    font-size: 18px; font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .tier-best-for {
+    text-align: center;
+    font-size: 12px;
+    color: var(--ink-mute);
+    margin-bottom: 22px;
+    min-height: 32px;
+  }
+
+  /* Hero — combined count + duration */
+  .hero {
+    text-align: center;
+    margin-bottom: 22px;
+    padding: 16px 0;
+    border-top: 1px solid var(--line-soft);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .hero-count {
+    display: flex; align-items: baseline; justify-content: center;
+    gap: 8px; margin-bottom: 4px;
+  }
+  .hero-num {
+    font-size: 48px; line-height: 1;
+    font-weight: 400; color: var(--ink-mute);
+    letter-spacing: -0.02em;
+  }
+  .card.popular .hero-num { color: var(--tangerine); font-weight: 500; }
+  .hero-unit {
+    font-size: 13px; color: var(--ink-mute);
+    font-weight: 500;
+  }
+  .hero-duration {
+    font-size: 12px; color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .hero-duration b {
+    color: var(--ink); font-weight: 700;
+  }
+
+  /* Features */
+  .features-label {
+    font-size: 11px; font-weight: 700;
+    color: var(--ink-mute);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .features {
+    list-style: none;
+    margin-bottom: 16px;
+    flex-grow: 1;
+  }
+  .features li {
+    display: flex; align-items: flex-start; gap: 8px;
+    font-size: 13px; line-height: 1.4;
+    color: var(--ink); padding: 5px 0;
+  }
+  .features li.upgrade {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .check {
+    flex-shrink: 0; width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--tangerine); color: #fff;
+    font-size: 10px; font-weight: 700;
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-top: 1px;
+  }
+
+
+  /* Included-with chip row */
+  .chips {
+    display: flex; gap: 6px; flex-wrap: wrap;
+    margin-bottom: 18px;
+    min-height: 28px;
+  }
+  .chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: var(--tangerine-soft);
+    color: var(--tangerine);
+    font-size: 11px; font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 999px;
+    letter-spacing: 0.01em;
+  }
+  .chip.whatsapp {
+    background: #E6F8EE;
+    color: #128C46;
+  }
+  .chip-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: currentColor;
+  }
+
+  /* Price */
+  .price {
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    text-align: center;
+  }
+  .price-main {
+    font-size: 28px; font-weight: 800;
+    color: var(--ink); letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .card.popular .price-main { color: var(--tangerine); }
+  .price-main-unit {
+    font-size: 14px; font-weight: 600;
+    color: var(--ink-mute);
+    letter-spacing: 0;
+  }
+  .card.popular .price-main-unit { color: var(--tangerine); opacity: 0.7; }
+  .price-per {
+    display: block;
+    font-size: 12px; color: var(--ink-mute);
+    margin-top: 4px;
+  }
+
+  /* CTA */
+  .cta {
+    display: block; width: 100%;
+    margin-top: 16px;
+    padding: 13px 16px;
+    border: 1.5px solid var(--ink);
+    border-radius: 10px;
+    background: transparent;
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 14px; font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .cta:hover { background: var(--ink); color: #fff; }
+  .cta-primary {
+    background: var(--tangerine);
+    border-color: var(--tangerine);
+    color: #fff;
+  }
+  .cta-primary:hover { background: #e94326; border-color: #e94326; color: #fff; }
+
+  /* ============== Rationale section ============== */
+  .rationale-section {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 40px 36px;
+  }
+  .rationale-title {
+    font-size: 22px; font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+  .rationale-intro {
+    color: var(--ink-soft); font-size: 14px;
+    margin-bottom: 32px; max-width: 720px;
+  }
+  .changes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 32px;
+  }
+  .change {
+    border-left: 3px solid var(--tangerine);
+    padding-left: 16px;
+  }
+  .change-num {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--tangerine);
+    margin-bottom: 4px;
+  }
+  .change-title {
+    font-size: 16px; font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .change-body {
+    font-size: 13px; line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .change-body b { color: var(--ink); font-weight: 600; }
+
+  /* Closing note */
+  .closing-note {
+    margin-top: 32px;
+    padding: 18px 22px;
+    background: var(--blueberry-soft);
+    border-radius: 12px;
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  .closing-note b { font-weight: 700; }
+
+  @media (max-width: 880px) {
+    .cards { grid-template-columns: 1fr; gap: 24px; }
+    .card.popular { transform: none; }
+    .changes-grid { grid-template-columns: 1fr; }
+    .pricing-frame { padding: 36px 20px 28px; }
+    .rationale-section { padding: 28px 20px; }
+  }
+  @media (max-width: 520px) {
+    body { padding: 32px 16px 56px; }
+    .page-title { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="page-header">
+    <div class="page-eyebrow">Design Proposal · v1</div>
+    <h1 class="page-title">Gymondo Nutrition Coaching — improved pricing layout</h1>
+  </header>
+
+  <!-- ============================================== -->
+  <!-- Proposed pricing cards                          -->
+  <!-- ============================================== -->
+  <div class="pricing-frame">
+    <div class="frame-eyebrow">Gymondo Nutrition Coaching</div>
+    <h2 class="frame-heading">Choose your coaching plan</h2>
+    <p class="frame-sub">1:1 nutrition coaching with a certified expert — personalized, flexible, and built around your goal.</p>
+
+    <div class="cards">
+      <!-- Tier 1 -->
+      <div class="card">
+        <div class="tier-name">Single Consultation</div>
+        <div class="tier-best-for">Best for a one-off check-in or a focused question</div>
+
+        <div class="hero">
+          <div class="hero-count">
+            <span class="hero-num">1</span>
+            <span class="hero-unit">session</span>
+          </div>
+          <div class="hero-duration">One-time appointment</div>
+        </div>
+
+        <div class="features-label">What's included</div>
+        <ul class="features">
+          <li><span class="check">✓</span>1:1 nutrition coaching</li>
+          <li><span class="check">✓</span>Full health &amp; lifestyle assessment</li>
+          <li><span class="check">✓</span>Personalized nutrition plan</li>
+          <li><span class="check">✓</span>Written session summary</li>
+        </ul>
+
+        <div class="price">
+          <div class="price-main">€79.99<span class="price-main-unit"> / session</span></div>
+          <span class="price-per">one-time payment</span>
+        </div>
+        <button class="cta">Book single session</button>
+      </div>
+
+      <!-- Tier 2 — popular -->
+      <div class="card popular">
+        <div class="popular-badge">Most popular</div>
+        <div class="tier-name">Reset Program</div>
+        <div class="tier-best-for">Best for kick-starting new habits that actually stick</div>
+
+        <div class="hero">
+          <div class="hero-count">
+            <span class="hero-num">3</span>
+            <span class="hero-unit">sessions</span>
+          </div>
+          <div class="hero-duration">over <b>6 weeks</b></div>
+        </div>
+
+        <div class="chips">
+          <span class="chip whatsapp"><span class="chip-dot"></span>WhatsApp support</span>
+        </div>
+
+        <div class="features-label">Everything in Single, plus</div>
+        <ul class="features">
+          <li><span class="check">✓</span>3× 1:1 coaching sessions</li>
+          <li><span class="check">✓</span>Summary after every session</li>
+          <li class="upgrade"><span class="check">✓</span>Direct WhatsApp support between sessions</li>
+          <li class="upgrade"><span class="check">✓</span>1 mid-program plan adjustment</li>
+        </ul>
+
+        <div class="price">
+          <div class="price-main">€46.66<span class="price-main-unit"> / session</span></div>
+          <span class="price-per">€139.99 total · save 42%</span>
+        </div>
+        <button class="cta cta-primary">Start Reset Program</button>
+      </div>
+
+      <!-- Tier 3 -->
+      <div class="card">
+        <div class="tier-name">Transform Program</div>
+        <div class="tier-best-for">Best for lasting change with ongoing accountability</div>
+
+        <div class="hero">
+          <div class="hero-count">
+            <span class="hero-num">6</span>
+            <span class="hero-unit">sessions</span>
+          </div>
+          <div class="hero-duration">over <b>3 months</b></div>
+        </div>
+
+        <div class="chips">
+          <span class="chip whatsapp"><span class="chip-dot"></span>WhatsApp support</span>
+          <span class="chip"><span class="chip-dot"></span>Progress review</span>
+        </div>
+
+        <div class="features-label">Everything in Reset, plus</div>
+        <ul class="features">
+          <li><span class="check">✓</span>6× 1:1 coaching sessions</li>
+          <li class="upgrade"><span class="check">✓</span>Mid-program progress review</li>
+          <li class="upgrade"><span class="check">✓</span>Unlimited plan adjustments</li>
+          <li class="upgrade"><span class="check">✓</span>Recipe library access</li>
+        </ul>
+
+        <div class="price">
+          <div class="price-main">€36.66<span class="price-main-unit"> / session</span></div>
+          <span class="price-per">€219.99 total · save 54%</span>
+        </div>
+        <button class="cta">Start Transform Program</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- Rationale                                      -->
+  <!-- ============================================== -->
+  <div class="rationale-section">
+    <h2 class="rationale-title">What changed &amp; why</h2>
+    <p class="rationale-intro">Eight deliberate moves, each addressing something the original five variants either tested badly or didn't address at all.</p>
+
+    <div class="changes-grid">
+
+      <div class="change">
+        <div class="change-num">01 · Hero</div>
+        <div class="change-title">Count + duration shown together</div>
+        <p class="change-body">The original Q4 was testing "session count" against "support period" as separate framings. <b>People buy both</b> — quantity tells them what they get, duration tells them how long they're supported. Showing them side-by-side with equal weight makes the offer self-explanatory and removes the need to pick a winner.</p>
+      </div>
+
+      <div class="change">
+        <div class="change-num">02 · Naming</div>
+        <div class="change-title">Outcome-named tiers</div>
+        <p class="change-body">"Einzelberatung / 3 Beratungen / 6 Beratungen" describes the SKU, not the value. <b>Single / Reset / Transform</b> signals a progression of commitment and outcome, making the upsell narrative obvious before the buyer reads a single bullet.</p>
+      </div>
+
+      <div class="change">
+        <div class="change-num">03 · Targeting</div>
+        <div class="change-title">"Best for…" line per tier</div>
+        <p class="change-body">A single line telling the visitor whether <b>this tier is for them</b>. Reduces decision paralysis and cuts the time spent comparing feature lists. Mirrors what the best subscription brands (Notion, Linear, Headspace) do at the top of every tier.</p>
+      </div>
+
+      <div class="change">
+        <div class="change-num">04 · WhatsApp</div>
+        <div class="change-title">Treated as a feature chip, not bold text</div>
+        <p class="change-body">Q6's orange-bold WhatsApp line is easy to skim past. Promoting it to a coloured <b>chip near the top of the card</b> — with the WhatsApp green for instant recognition — makes "you can reach your coach between sessions" the second thing the eye lands on after the tier name.</p>
+      </div>
+
+      <div class="change">
+        <div class="change-num">05 · Differentiation</div>
+        <div class="change-title">Real reasons to upgrade</div>
+        <p class="change-body">The originals upsell on quantity alone: 3 sessions vs 6 sessions, identical lists. <b>Reset adds a plan adjustment; Transform adds a progress review, unlimited adjustments, and recipe library.</b> Each tier offers something the previous one doesn't, so the price gap actually buys something.</p>
+      </div>
+
+      <div class="change">
+        <div class="change-num">06 · Pricing</div>
+        <div class="change-title">Per-session price as the hero number</div>
+        <p class="change-body">The original cards lead with the total (€79.99 / €139.99 / €219.99), which makes the headline number rise as you move right — visually punishing the upsell. Leading with <b>per-session price</b> inverts this: €79.99 → €46.66 → €36.66. The headline number <b>drops</b> as the package gets bigger, so the upgrade reads as a discount before the buyer has parsed a single feature. Total + savings sit below as the secondary anchor.</p>
+      </div>
+
+      <div class="change">
+        <div class="change-num">07 · Hierarchy</div>
+        <div class="change-title">Popular tier is genuinely bigger</div>
+        <p class="change-body">The original cards rely solely on the orange border + badge to mark the recommended tier. Adding <b>~8% width</b>, a soft glow shadow, and slightly more vertical breathing room makes the visual hierarchy do the work — so the badge doesn't have to.</p>
+      </div>
+
+      <div class="change">
+        <div class="change-num">08 · Conversion</div>
+        <div class="change-title">CTAs that name the action</div>
+        <p class="change-body">None of the five original variants showed a button at all. <b>"Start Reset Program"</b> reinforces the tier name and the action — far stronger than a generic "Choose plan". Primary fill on the recommended tier, outline on the others, so the eye knows where to go.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>
